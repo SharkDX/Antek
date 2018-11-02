@@ -7,7 +7,6 @@ Antek::World::World(const uint32_t x_size, const uint32_t y_size, const uint32_t
 	_size_z = z_size;
 
 	int r = rand();
-	printf("%d\n", r);
 	_world_generator = new WorldGeneration::WorldGenerator(_size_x, _size_y, _size_z, r);
 
 	_blocks = new Block***[_size_x];
@@ -40,6 +39,11 @@ Antek::World::~World()
 
 void Antek::World::Init()
 {
+}
+
+void Antek::World::CalculateLights()
+{
+
 }
 
 Antek::Block**** Antek::World::GetBlocksForRenderer()

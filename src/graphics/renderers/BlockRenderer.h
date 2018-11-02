@@ -22,7 +22,7 @@ namespace Antek
 			{
 			public:				
 				void Init(Block**** blocks, const uint32_t x_size, const uint32_t y_size, const uint32_t z_size);
-				void AddVertices(const int x, const int y, const int z, std::vector<OpenGL::Vertex>& v, const uint8_t solid_state, const glm::vec3 color);
+				void AddVertices(const int x, const int y, const int z, std::vector<OpenGL::Vertex>& v, const uint8_t solid_state, const glm::vec3 color, float light[6]);
 				void Render(glm::mat4 &mvpMatrix);
 			private:
 				OpenGL::Shader* _shader;

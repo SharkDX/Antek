@@ -6,6 +6,7 @@
 #include "utils\Camera.h"
 #include "World.h"
 #include "BlockFactory.h"
+#include "utils\Profiler.h"
 
 namespace Antek
 {
@@ -33,7 +34,7 @@ namespace Antek
 		Utils::Camera* _camera;
 		World* _world;
 		Renderers::BlockRenderer* _block_renderer;
-
+		Utils::Profiler* _profiler;
 
 		void Update(float deltaTime);
 		void Render();

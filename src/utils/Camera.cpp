@@ -16,7 +16,7 @@ Antek::Utils::Camera::Camera(const glm::vec3 &position)
 void Antek::Utils::Camera::init()
 {
     this->Projection = glm::perspective(60.0f, _screen_width / (float)_screen_height, 0.1f, 2000.0f);
-    this->position = glm::vec3(0.0f, 128.0f, 0.0f);
+    this->position = glm::vec3(0.0f, 64.0f, 0.0f);
     this->direction = glm::vec3(0.0f, 0.0f, 1.0f);
     this->up = glm::vec3(0.0f, 1.0f, 0.0f);
     horizontalAngle = 0;

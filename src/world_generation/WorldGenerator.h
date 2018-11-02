@@ -12,7 +12,10 @@ namespace Antek
 		{
 		public:
 			WorldGenerator(const uint32_t x_size, const uint32_t y_size, const uint32_t z_size, const int seed);
-			~WorldGenerator();
+			virtual ~WorldGenerator();
+			WorldGenerator(const WorldGenerator&) = delete;
+			WorldGenerator& operator=(const WorldGenerator&) = delete;
+
 			void GenerateWorld(Block**** blocks);
 		private:
 			float normal_float(float f);

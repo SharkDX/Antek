@@ -1,29 +1,31 @@
 #pragma once
-#define WORLD_SIZE 20
 #include <iostream>
 #include <fstream>
+#include "LightingManager.h"
 #include "world_generation\WorldGenerator.h"
 #include "Block.h"
 
 namespace Antek
 {
-	class World
+	class Chunk
 	{
 	public:
-		World(const uint32_t x_size, const uint32_t y_size, const uint32_t z_size);
-		~World();
+		Chunk(WorldGeneration::WorldGenerator* world_generator);
+		~Chunk();
 		void Init();
-		Block**** GetBlocksForRenderer();
+		Block*** GetBlocksForRenderer();
 
 		uint32_t GetSizeX();
 		uint32_t GetSizeY();
 		uint32_t GetSizeZ();
+		Antek::Block GetBlock(int i, int j, int k);
 	private:
-		Block**** _blocks;
+		Block*** _blocks;
 		uint32_t _size_x;
 		uint32_t _size_y;
 		uint32_t _size_z;
 		WorldGeneration::WorldGenerator* _world_generator;
-		void CalculateLights();
+
+		unsigned int Antek::Chunk::GetLightValue(int i, int j, int k);
 	};
 }

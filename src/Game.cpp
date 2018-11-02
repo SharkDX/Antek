@@ -24,12 +24,15 @@ void Antek::Game::LoadResources()
 
 void Antek::Game::Initialize()
 {
+	_profiler = new Utils::Profiler();
+	_profiler->StartNewProfile("Total Init");
+
 	// OpenGL setup
 	glClearColor(0.1f, 0.4f, 0.8f, 1);
 	glClearDepth(1.0f);
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
-	glEnable(GL_CULL_FACE);
+	glDisable(GL_CULL_FACE);
 
 	// Input setup
 	// TODO make a custom cursor
@@ -39,9 +42,17 @@ void Antek::Game::Initialize()
 	BlockFactory::InitBlockTypes();
 
 	_camera = new Utils::Camera(_window);
-	_world = new World(350, 128, 350);
+
+	_profiler->StartNewProfile("World Generation");
+	_world = new World(128, 64, 128);
+	_profiler->EndProfile("World Generation");
+
+	_profiler->StartNewProfile("Rendering Generation");
 	_block_renderer = new Renderers::BlockRenderer();
 	_block_renderer->Init(_world->GetBlocksForRenderer(), _world->GetSizeX(), _world->GetSizeY(), _world->GetSizeZ());
+	_profiler->EndProfile("Rendering Generation");
+
+	_profiler->EndProfile("Total Init");
 }
 
 void Antek::Game::Update(float deltaTime)

@@ -12,9 +12,15 @@ namespace Antek
 			{
 			public:
 				glm::vec3 Position, Normal, Color;
+				float BlockLight;
 
 				Vertex(glm::vec3 pos, glm::vec3 normal) 
 					: Position(pos), Normal(normal)
+				{
+				}
+
+				Vertex(const float &x, const float &y, const float &z, const float &nX, const float &nY, const float &nZ, const glm::vec3 color, float blocklight)
+					: Position(glm::vec3(x, y, z)), Normal(glm::vec3(nX, nY, nZ)), Color(color), BlockLight(blocklight)
 				{
 				}
 
@@ -35,7 +41,7 @@ namespace Antek
 
 				static int GetSizeInByte()
 				{
-					return 36;
+					return 40;
 				}
 			};
 		}
