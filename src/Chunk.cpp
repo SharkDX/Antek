@@ -17,7 +17,8 @@ Antek::Chunk::Chunk(int chunk_x, int chunk_z, WorldGeneration::WorldGenerator* w
 		height_map[i] = new int[_size_z];
 		for (size_t k = 0; k < _size_z; k++)
 		{
-			height_map[i][k] = _world_generator->GetHeight(_chunk_x + i, _chunk_z + k);
+			//height_map[i][k] = _world_generator->GetHeight(_chunk_x + i, _chunk_z + k);
+			height_map[i][k] = _size_y;
 			if (height_map[i][k] > max_height)
 				max_height = height_map[i][k];
 			if (height_map[i][k] < min_height)
@@ -37,7 +38,8 @@ Antek::Chunk::Chunk(int chunk_x, int chunk_z, WorldGeneration::WorldGenerator* w
 			for (size_t j = 0; j <= max_height - min_height; j++)
 				_blocks[i][k][j].id = 0;
 			for (size_t j = 0; j <= height_map[i][k] - min_height; j++)
-				_blocks[i][k][j].id = _world_generator->GetBiome(_chunk_x + i, _chunk_z + k)->GetBlockId(_chunk_x + i, min_height + j, _chunk_z + k, height_map[i][k]);
+				_blocks[i][k][j].id = 1;
+				//_blocks[i][k][j].id = _world_generator->GetBiome(_chunk_x + i, _chunk_z + k)->GetBlockId(_chunk_x + i, min_height + j, _chunk_z + k, height_map[i][k]);
 		}
 	}
 }
